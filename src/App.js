@@ -4,6 +4,8 @@ import Nav from './componentes/Nav';
 import NavLinks from './componentes/NavLinks';
 import ImagemHeader from './componentes/ImagemHeader.js';
 import Sobre from './componentes/Sobre.js';
+import Container from './componentes/Container.js';
+import Container2 from './componentes/Container2.js';
 
 
 function App() {
@@ -13,6 +15,8 @@ function App() {
       <NavLinks />
       <ImagemHeader />
       <Sobre />
+      <Container />
+      <Container2 />
      
     </div>
   );
