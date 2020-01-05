@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import Nav from './componentes/Nav';
 import NavLinks from './componentes/NavLinks';
 import ImagemHeader from './componentes/ImagemHeader.js';
@@ -8,14 +8,15 @@ import Container2 from './componentes/Container2.js';
 import ContainerImagens from './componentes/ContainerImagens.js';
 import ContainerImagens2 from './componentes/ContainerImagens2.js';
 import Footer from './componentes/Footer.js';
-import Page2 from './paginas/Page2.js';
+import Home from './pages/Home';
+import Page2 from './pages/Page2.js';
 import {BrowserRouter, Switch,Route} from 'react-router-dom';
 
 
 function App() {
   return (
     <div className="App">
-      <Nav />
+      {/* <Nav />
       <NavLinks />
       <ImagemHeader />
       <Sobre />
@@ -24,14 +25,15 @@ function App() {
       <ContainerImagens />
       <ContainerImagens2 />
       <Footer />
-    
-    
-    <BrowserRouter>
-    <Switch>
-    <Route path="/Page2" component={Page2} />
-    </Switch>
-   </BrowserRouter>
-   </div>
+     */}
+      
+      <BrowserRouter>
+      <Switch>
+        <Route path="/Home" component={Home} />
+        <Route path="/Page2" component={Page2} />
+      </Switch>
+    </BrowserRouter>
+    </div>
   );
 }
 
