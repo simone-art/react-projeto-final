@@ -10,6 +10,7 @@ import ContainerImagens2 from './componentes/ContainerImagens2.js';
 import Footer from './componentes/Footer.js';
 import Home from './pages/Home';
 import Page2 from './pages/Page2.js';
+import Page3 from './pages/Page3.js';
 import {BrowserRouter, Switch,Route} from 'react-router-dom';
 
 
@@ -31,6 +32,7 @@ function App() {
       <Switch>
         <Route path="/Home" component={Home} />
         <Route path="/Page2" component={Page2} />
+        <Route path="/Page3" component={Page3} />
       </Switch>
     </BrowserRouter>
     </div>

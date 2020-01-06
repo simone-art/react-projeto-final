@@ -14,12 +14,12 @@ const ContainerNav = () => {
         <section className="container-row">
             <div className="tempo">
                 <img className="foto-relogio" src={imagemSobre} alt="foto de um relógio"></img>
-                <h2>Controle o seu tempo</h2>
+                <h2 className="titulo">Controle o seu tempo</h2>
                 <p className="texto-tempo">Busque as informações que você precisa sem perder seu tempo</p> 
             </div>
             <div className="organizacao">
                 <img className="foto-relogio" src={imagemLibro} alt="foto de um relógio"></img>
-                <h2>Tudo Organizado</h2>
+                <h2 className="titulo">Tudo Organizado</h2>
                 <p className="texto-tempo">Salve o material em pastas personalizadas</p> 
             </div>
         </section>

@@ -10,12 +10,12 @@ const ContainerNav2 = () => {
         <section className="container-row-2">
             <div className="tempo">
                 <img className="foto-relogio" src={ImagemDispositivo} alt="foto de um relógio"></img>
-                <h2>Estude onde quiser</h2>
+                <h2 className="titulo">Estude onde quiser</h2>
                 <p className="texto-tempo">Seja no celular, tablet ou desktop encontre todas as suas anotações e aproveite! </p> 
             </div>
             <div className="organizacao">
                 <img className="foto-relogio" src={ImagemPasta} alt="foto de um relógio"></img>
-                <h2>Descarregue tudo e  + </h2>
+                <h2 className="titulo">Descarregue tudo e  + </h2>
                 <p className="texto-tempo">Ebooks e planilhas estarão a sua disposição para reforçar o seu estudo</p> 
             </div>
         </section>

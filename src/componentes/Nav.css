@@ -112,6 +112,10 @@ background-color: black;
     text-align: center;
 }
 
+.titulo {
+    color: black;
+}
+
 .container-imagens, .container-imagens-2 {
     width: 90%;
     height: 90%;

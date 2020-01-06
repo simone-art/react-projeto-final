@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
-import Nav from '../componentes/Nav';
-import NavLinks from '../componentes/NavLinks';
+import Nav from '../componentes/Nav.js';
+import NavLinks from '../componentes/NavLinks.js';
 import ImagemHeader from '../componentes/ImagemHeader.js';
 import Sobre from '../componentes/Sobre.js';
 import Container from '../componentes/Container.js';
