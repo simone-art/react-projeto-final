@@ -8,6 +8,7 @@ import './Nav.css';
 
 const FooterHome = () => {
     return (
+        <section id="contato">
         <div className="footer">
             <img className="icone" src= {imagemFacebook} alt="icone do facebook"></img>
             <a href="https://www.facebook.com/Digital-Notebook-106583407505795/?modal=admin_todo_tour"> </a>
@@ -15,6 +16,7 @@ const FooterHome = () => {
             <a href="https://www.instagram.com/digitalnotebook1/"> </a>
             <img className="icone" src={imagemEmail} alt="icone de email"></img>
         </div>
+        </section>
         
     )
 }

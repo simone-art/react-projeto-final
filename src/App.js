@@ -30,6 +30,8 @@ function App() {
       
       <BrowserRouter>
       <Switch>
+        <Route path="/" exact={true} component={Sobre} />
+        <Route path="/" exact={true} component={Footer} />
         <Route path="/Home" component={Home} />
         <Route path="/Page2" component={Page2} />
         <Route path="/Page3" component={Page3} />

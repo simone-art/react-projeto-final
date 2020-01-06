@@ -12,7 +12,7 @@ const NavLinksSection = () => {
             <a className='sobre' href="#sobre">Sobre</a>
             <a className='sobre' href="Page2">Registre-se</a>
             <a className='caderno-digital' href="Page3">Caderno Digital</a>
-            <a className='contato' href="#footerFin">Contato</a>
+            <a className='contato' href="#contato">Contato</a>
             <a className='contato' href="index.html">Pt</a>
             <a className='contato' href="indexEsp.html">Esp</a>
             </div>

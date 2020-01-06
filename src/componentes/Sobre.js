@@ -8,12 +8,14 @@ import './Nav.css';
 
 const SobreNav = () => {
     return (
+        <section id="sobre">
         <div className="features">
             <h2 className="titulo">Digital Notebook</h2>
             <p className="texto-1">Somos a Digital Notebook, uma plataforma online para você ter todas as suas anotações
         na palma da sua  mão. Diga adeus aos cadernos e peso na sua mochila. 
         Agora tudo o que você precisa estará no alcance de um clique!</p> 
         </div>
+        </section>
         
     )
 }
