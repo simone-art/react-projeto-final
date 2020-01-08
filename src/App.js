@@ -11,7 +11,7 @@ import Footer from './componentes/Footer.js';
 import Home from './pages/Home';
 import Page2 from './pages/Page2.js';
 import Page3 from './pages/Page3.js';
-import {BrowserRouter, Redirect, Switch,Route} from 'react-router-dom';
+import {BrowserRouter, Switch,Route} from 'react-router-dom';
 
 
 function App() {
@@ -34,7 +34,6 @@ function App() {
         <Route path="/" exact={true} component={Footer} />
         <Route path="/Home" component={Home} />
         <Route path="/Page2" component={Page2} />
-        <Redirect from="/Page2/" to="/Page3/" />
         <Route path="/Page3" component={Page3} />
       </Switch>
     </BrowserRouter>

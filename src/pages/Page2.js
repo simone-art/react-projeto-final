@@ -9,42 +9,12 @@ import ContainerImagens from '../componentes/ContainerImagens.js';
 import ContainerImagens2 from '../componentes/ContainerImagens2.js';
 import Footer from '../componentes/Footer.js';
 import '../pages/Page2.css';
-import {Redirect} from 'react-router-dom';
+import Page3 from '../pages/Page3';
 
 
 
-class ContainerBemvindas extends React.Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            data: [],
-            textoInput: ""
-        }
-    }
-
-    onChangeInput=(element) => {
-        let textoInput=element.target.value
-        this.setState({textoInput:textoInput})
-        console.log(textoInput)
-    }
-
-    onSubmit = (evento) => {
-        evento.preventDefault();{
-            if(this.onChangeInput){
-                return  <Redirect  to="/Home/" />
-            }
-        }
-    }    
-
-        
-        
-    // onSend() {
-    //     if (this.state.textoInput() == ""){
-    //     this.state.textoInput='Por favor, digite seu nome'
-    //   }
-    // }    
-    
-    render() {
+const ContainerBemvindas = (props) => {
+    const {history} = props;  
       return (
           <Fragment>
               <Nav />
@@ -67,21 +37,21 @@ class ContainerBemvindas extends React.Component {
                 <p className="texto-registrese">Registrar-se é muito rápido. Abra uma conta 
             e desfrute desta ferramenta de estudo exclusivo para a Reprograma</p>
             <p className="nome"><strong>Nome</strong></p>
-            <input change={this.onChangeInput} type="text" id="adicioneNome" placeholder="Por favor, digite seu nome"></input>
+            <input type="text" id="adicioneNome" placeholder="Por favor, digite seu nome"></input>
             <hr></hr>
             <p className="sobrenome"><strong>Sobrenome</strong></p>
-            <input change={this.onChangeInput} type="text" id="adicioneSobrenome" placeholder="Por favor, digite seu sobrenome"></input>
+            <input type="text" id="adicioneSobrenome" placeholder="Por favor, digite seu sobrenome"></input>
             <hr></hr>
             <p className="Email"><strong>Email</strong></p>
-            <input change={this.onChangeInput} type="text" id="adicioneEmail" placeholder="Por favor, digite seu email"></input>
+            <input type="text" id="adicioneEmail" placeholder="Por favor, digite seu email"></input>
             <hr></hr>
             <p className="senha"><strong>Senha</strong></p>
-            <input change={this.onChangeInput} type="password" id="adicioneSenha" placeholder="Por favor, digite sua senha"></input>
+            <input type="password" id="adicioneSenha" placeholder="Por favor, digite sua senha"></input>
             <hr></hr>
             <p className="confirmar"><strong>Confirmar Senha</strong></p>
-            <input change={this.onChangeInput} type="password" id="confirmeSenha" placeholder="Por favor, confirme a sua senha"></input>
+            <input type="password" id="confirmeSenha" placeholder="Por favor, confirme a sua senha"></input>
             <hr></hr>
-            <button click={this.onSubmit} className="btn-enviar">Enviar</button>
+            <button onClick={()=>history.push('/Page3')} className="btn-enviar">Enviar</button>
             </form>
         </div>
         </section>
@@ -91,7 +61,7 @@ class ContainerBemvindas extends React.Component {
         </Fragment>
       );
     }
-  }
+
 
 
 // const ContainerBemvindas = () => {
