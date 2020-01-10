@@ -8,6 +8,7 @@ import ContainerImagens from '../componentes/ContainerImagens.js';
 import ContainerImagens2 from '../componentes/ContainerImagens2.js';
 import Footer from '../componentes/Footer.js';
 import '../pages/Page3.css';
+import Page3Button from '../componentes/Page3Button';
 
 class CadernoDigital extends React.Component {
     render() {
@@ -17,11 +18,7 @@ class CadernoDigital extends React.Component {
                 <NavLinks />
                 <ImagemHeader />
                 <section className="secao-caderno-digital">
-                    <div>
-                        <button id="ferramentas-geral" className="ferramentas">Ferramentas
-                    <div className="button_horizontal"></div>
-                        </button>
-                    </div>
+                    <Page3Button />
                     <div id="div1">
                         <button id="button-cadernos" className="btn-cadernos">
                             <img src={ImagemPasta} alt="icone-de-pasta"></img>

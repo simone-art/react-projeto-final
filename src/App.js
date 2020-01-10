@@ -11,6 +11,7 @@ import Footer from './componentes/Footer.js';
 import Home from './pages/Home';
 import Page2 from './pages/Page2.js';
 import Page3 from './pages/Page3.js';
+import Page3Button from './componentes/Page3Button'
 import {BrowserRouter, Switch,Route} from 'react-router-dom';
 
 
@@ -35,6 +36,7 @@ function App() {
         <Route path="/Home" component={Home} />
         <Route path="/Page2" component={Page2} />
         <Route path="/Page3" component={Page3} />
+        <Route path="/Page3:id" component={Page3Button} />
       </Switch>
     </BrowserRouter>
     </div>

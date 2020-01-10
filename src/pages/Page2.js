@@ -12,7 +12,6 @@ import '../pages/Page2.css';
 import Page3 from '../pages/Page3';
 
 
-
 const ContainerBemvindas = (props) => {
     const {history} = props;  
       return (
