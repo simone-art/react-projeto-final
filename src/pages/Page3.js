@@ -8,9 +8,35 @@ import ContainerImagens from '../componentes/ContainerImagens.js';
 import ContainerImagens2 from '../componentes/ContainerImagens2.js';
 import Footer from '../componentes/Footer.js';
 import '../pages/Page3.css';
-import Page3Button from '../componentes/Page3Button';
 
 class CadernoDigital extends React.Component {
+    constructor(props){
+        super(props)
+        this.state={
+            ButtonCaderno: 'Esconder',
+            ButtonFerramentas: 'show'
+        }
+    }
+
+    alterarEstado=() => {
+        let Estado;
+        let ButtonCaderno;
+        if (this.setState.ButtonFerramentas === 'show'){
+        Estado="hide";
+        ButtonCaderno="Mostrar";
+        } else{
+        Estado="show";
+        ButtonCaderno="Esconder";
+        }
+
+    this.setState(()=>{
+            return{
+                ButtonCaderno:ButtonCaderno,
+                ButtonFerramentas: Estado
+                
+            }
+        })
+    }
     render() {
         return (
             <Fragment>
@@ -18,9 +44,13 @@ class CadernoDigital extends React.Component {
                 <NavLinks />
                 <ImagemHeader />
                 <section className="secao-caderno-digital">
-                    <Page3Button />
+                    <div>
+                        <button onClick={this.state.ButtonFerramentas} id="ferramentas-geral" className="ferramentas">Ferramentas
+                    <div className="button_horizontal"></div>
+                        </button>
+                    </div>
                     <div id="div1">
-                        <button id="button-cadernos" className="btn-cadernos">
+                        <button onClick={this.state.ButtonCaderno} id="button-cadernos" className="btn-cadernos">
                             <img src={ImagemPasta} alt="icone-de-pasta"></img>
                             <p>Cadernos</p>
                         </button>
