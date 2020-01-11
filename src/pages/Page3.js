@@ -7,23 +7,22 @@ import ImagemPasta from '../img/icone-pasta.png';
 import ContainerImagens from '../componentes/ContainerImagens.js';
 import ContainerImagens2 from '../componentes/ContainerImagens2.js';
 import Footer from '../componentes/Footer.js';
+import ToggleDisplay from 'react-toggle-display';
 import '../pages/Page3.css';
 
 
 class CadernoDigital extends React.Component {
     constructor(props){
         super(props)
-        this.handleFerramentasClick = this.handleFerramentasClick.bind(this);
-        this.handleCadernoClick = this.handleCadernoClick.bind(this);
-        this.state = {ButtonCadernoAparece: false};
+        this.state = {show: false};
         }
+
+        handleClick() {
+            this.setState({
+              show: !this.state.show
+            });
+          }
         
-        handleCadernoClick(){
-            this.setState({ButtonCadernoAparece: true});
-        }
-        handleFerramentasClick(){
-            this.setState({ButtonCadernoAparece: false})
-        }
 
     // this.setState({
     //     })
@@ -36,15 +35,17 @@ class CadernoDigital extends React.Component {
                 <ImagemHeader />
                 <section className="secao-caderno-digital">
                     <div>
-                        <button onClick={this.handleCadernoClick} id="ferramentas-geral" className="ferramentas">Ferramentas
+                        <button onClick={ () => this.handleClick() } id="ferramentas-geral" className="ferramentas">Ferramentas
                     <div className="button_horizontal"></div>
                         </button>
                     </div>
                     <div id="div1">
-                        <button onClick={this.handleFerramentasClick} id="button-cadernos" className="btn-cadernos">
+                        <ToggleDisplay show={this.state.show}>
+                        <button funcao={this.state.show}  id="button-cadernos" className="btn-cadernos">
                             <img src={ImagemPasta} alt="icone-de-pasta"></img>
                             <p>Cadernos</p>
                         </button>
+                        </ToggleDisplay>
                     </div>
 {/* 
                     <section id="caderno-img">
