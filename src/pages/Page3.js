@@ -9,34 +9,25 @@ import ContainerImagens2 from '../componentes/ContainerImagens2.js';
 import Footer from '../componentes/Footer.js';
 import '../pages/Page3.css';
 
+
 class CadernoDigital extends React.Component {
     constructor(props){
         super(props)
-        this.state={
-            ButtonCaderno: 'Esconder',
-            ButtonFerramentas: 'show'
+        this.handleFerramentasClick = this.handleFerramentasClick.bind(this);
+        this.handleCadernoClick = this.handleCadernoClick.bind(this);
+        this.state = {ButtonCadernoAparece: false};
         }
-    }
-
-    alterarEstado=() => {
-        let Estado;
-        let ButtonCaderno;
-        if (this.setState.ButtonFerramentas === 'show'){
-        Estado="hide";
-        ButtonCaderno="Mostrar";
-        } else{
-        Estado="show";
-        ButtonCaderno="Esconder";
+        
+        handleCadernoClick(){
+            this.setState({ButtonCadernoAparece: true});
+        }
+        handleFerramentasClick(){
+            this.setState({ButtonCadernoAparece: false})
         }
 
-    this.setState(()=>{
-            return{
-                ButtonCaderno:ButtonCaderno,
-                ButtonFerramentas: Estado
-                
-            }
-        })
-    }
+    // this.setState({
+    //     })
+    // }
     render() {
         return (
             <Fragment>
@@ -45,17 +36,17 @@ class CadernoDigital extends React.Component {
                 <ImagemHeader />
                 <section className="secao-caderno-digital">
                     <div>
-                        <button onClick={this.state.ButtonFerramentas} id="ferramentas-geral" className="ferramentas">Ferramentas
+                        <button onClick={this.handleCadernoClick} id="ferramentas-geral" className="ferramentas">Ferramentas
                     <div className="button_horizontal"></div>
                         </button>
                     </div>
                     <div id="div1">
-                        <button onClick={this.state.ButtonCaderno} id="button-cadernos" className="btn-cadernos">
+                        <button onClick={this.handleFerramentasClick} id="button-cadernos" className="btn-cadernos">
                             <img src={ImagemPasta} alt="icone-de-pasta"></img>
                             <p>Cadernos</p>
                         </button>
                     </div>
-
+{/* 
                     <section id="caderno-img">
                         <div className="caderno-funcional">
                             <h2>Título</h2>
@@ -79,7 +70,7 @@ class CadernoDigital extends React.Component {
                             <button id="salvar" className="btn-salvar">Salvar</button>
                             <button id="novo" className="btn-novo">Criar PDF</button>
                         </div>
-                    </section>
+                    </section> */}
                 </section>
                 <ContainerImagens />
                 <ContainerImagens2 />
