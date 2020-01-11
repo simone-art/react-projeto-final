@@ -14,19 +14,26 @@ import '../pages/Page3.css';
 class CadernoDigital extends React.Component {
     constructor(props){
         super(props)
-        this.state = {show: false};
+        this.state = {
+            show: false, 
+            hide: true
+        
+        };
         }
 
         handleClick() {
             this.setState({
               show: !this.state.show
             });
-          }
+        }
+
+        handleClickCaderno () {
+            this.setState({
+                hide: !this.state.hide
+            });
+        }
         
 
-    // this.setState({
-    //     })
-    // }
     render() {
         return (
             <Fragment>
@@ -41,14 +48,15 @@ class CadernoDigital extends React.Component {
                     </div>
                     <div id="div1">
                         <ToggleDisplay show={this.state.show}>
-                        <button funcao={this.state.show}  id="button-cadernos" className="btn-cadernos">
+                        <button onClick ={() => this.handleClickCaderno()} id="button-cadernos" className="btn-cadernos">
                             <img src={ImagemPasta} alt="icone-de-pasta"></img>
                             <p>Cadernos</p>
                         </button>
                         </ToggleDisplay>
                     </div>
-{/* 
+ 
                     <section id="caderno-img">
+                    <ToggleDisplay hide={this.state.hide}>
                         <div className="caderno-funcional">
                             <h2>Título</h2>
                             <input id="tituloInput" class="inputSpace" type="text" size="15" maxlength="30"
@@ -71,7 +79,8 @@ class CadernoDigital extends React.Component {
                             <button id="salvar" className="btn-salvar">Salvar</button>
                             <button id="novo" className="btn-novo">Criar PDF</button>
                         </div>
-                    </section> */}
+                        </ToggleDisplay>
+                    </section> 
                 </section>
                 <ContainerImagens />
                 <ContainerImagens2 />
