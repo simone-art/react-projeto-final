@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import ReactDOM from 'react-dom';
 import Nav from '../componentes/Nav';
 import NavLinks from '../componentes/NavLinks';
 import ImagemHeader from '../componentes/ImagemHeader.js';
@@ -8,7 +9,6 @@ import ContainerImagens from '../componentes/ContainerImagens.js';
 import ContainerImagens2 from '../componentes/ContainerImagens2.js';
 import Footer from '../componentes/Footer.js';
 import ToggleDisplay from 'react-toggle-display';
-import ButtonCreaButton from "../componentes/ButtonCreaButton.js";
 import '../pages/Page3.css';
 
 
@@ -18,9 +18,12 @@ class CadernoDigital extends React.Component {
         this.state = {
             show: false,
             hide: true,
-            creaButton: <ButtonCreaButton />
-
+            value: ""
+            
         };
+        this.handleClickInput=this.handleClickInput.bind(this)
+        this.handleChange=this.handleChange.bind(this)
+        this.handleSubmit=this.handleSubmit.bind(this)
     }
 
     handleClick() {
@@ -35,39 +38,35 @@ class CadernoDigital extends React.Component {
         });
     }
 
-    // handleClickInput() {
-    //     this.setState({
-    //         tituloInput: this.tituloInput.value
-    //     })
-    // }
-
-    handleClickAdicionarCaderno() {
+    
+    handleClickInput() {
+        this.handleSubmit()
+        console.log("alguma coisa");
+        
+    }
+    
+    handleChange(event){
         this.setState({
-            creaButton: <ButtonCreaButton />
+            value: event.target.value
         })
+        
     }
-
-    tituloInputAdicionarCaderno(evento) {
-        const tituloInput = tituloInput.value;
-        const errorInput = errorInput.value;
-        evento.preventDefault();
-        if (tituloInput === "") {
-            errorInput.textContent = "Digite o titulo da sua matéria!"
-        } else {
-            const adicionarCaderno = React.createElement(
-                "button",
-                { id: "btn-cadernos-fin" },
-                "adicionarCaderno",
-                'div',
-                { id: 'Tabela' },
-                'tituloInput')
-
-
-        }
+    
+    handleSubmit(event) {
+        alert(`você é um trouxa: ${this.state.value}`);
+        let buttonCaderno = React.createElement("button", {value:"this.state.value"})
+        // buttonCaderno.appendChild("Tabela")
+        // buttonCaderno.className.addClassList="btn-cadernos-fin"
+        // function run() {
+        //     ReactDOM.render(button,document.getElementById('#Tabela'))
+    
+        // }
+        console.log("clickou")
     }
-
+    
 
     render() {
+        const {value} = this.state;
         return (
             <Fragment>
                 <Nav />
@@ -92,16 +91,21 @@ class CadernoDigital extends React.Component {
                         <ToggleDisplay hide={this.state.hide}>
                             <div className="caderno-funcional">
                                 <h2>Título</h2>
-                                <input id="tituloInput" className="inputSpace" type="text" size="15" maxlength="30"
-                                    placeholder="Escreva o título do caderno"></input>
                                 <p className="error"></p>
-                                <button onClick={() => this.handleClickAdicionarCaderno()} id="button-agregar" className="btn-agregar">Adicionar Caderno</button>
+                                <input id="tituloInput" className="inputSpace" type="text" size="15" maxlength="30"
+                                value={value} onChange={this.handleChange}
+                                placeholder="Escreva o título do caderno"></input>
+                                <button onClick={() => this.handleSubmit()} id="button-agregar" className="btn-agregar">Adicionar Caderno</button>
                             </div>
 
-                            <div id="cadernos" draggable="true">
-                                <ButtonCreaButton />
 
-                                <div id="Tabela"></div>
+                            <div id="cadernos" draggable="true">
+                                
+                               
+
+                                <div id="Tabela">
+                                
+                                </div>
 
 
                             </div>
