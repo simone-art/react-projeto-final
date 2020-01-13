@@ -11,6 +11,7 @@ import Footer from './componentes/Footer.js';
 import Home from './pages/Home';
 import Page2 from './pages/Page2.js';
 import Page3 from './pages/Page3.js';
+import ButtonCreaButton from "./componentes/ButtonCreaButton.js";
 import {BrowserRouter, Switch,Route} from 'react-router-dom';
 
 

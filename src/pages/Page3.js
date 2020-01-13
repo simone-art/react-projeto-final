@@ -8,64 +8,66 @@ import ContainerImagens from '../componentes/ContainerImagens.js';
 import ContainerImagens2 from '../componentes/ContainerImagens2.js';
 import Footer from '../componentes/Footer.js';
 import ToggleDisplay from 'react-toggle-display';
+import ButtonCreaButton from "../componentes/ButtonCreaButton.js";
 import '../pages/Page3.css';
 
 
 class CadernoDigital extends React.Component {
-    constructor(props){
+    constructor(props) {
         super(props)
         this.state = {
-            show: false, 
-            hide: true
-        
+            show: false,
+            hide: true,
+            creaButton: <ButtonCreaButton />
+
         };
-        }
+    }
 
-        handleClick() {
-            this.setState({
-              show: !this.state.show
-            });
-        }
+    handleClick() {
+        this.setState({
+            show: !this.state.show
+        });
+    }
 
-        handleClickCaderno () {
-            this.setState({
-                hide: !this.state.hide
-            });
-        }
-        
-        buttonAgregar = document.getElementById("button-agregar");
-        tituloInput= document.getElementById("tituloInput") 
-        tabela = document.getElementById("Tabela");
-        error = document.querySelector(".error");
-        // titulo = tituloInput.value;
+    handleClickCaderno() {
+        this.setState({
+            hide: !this.state.hide
+        });
+    }
 
-        // buttonAdicionarCaderno () {
-        //     const adicionarCaderno = React.createElement("button");
-        // }
+    // handleClickInput() {
+    //     this.setState({
+    //         tituloInput: this.tituloInput.value
+    //     })
+    // }
 
-        tituloInputAdicionarCaderno(evento){
-            const tituloInput = tituloInput.value;
-            const errorInput = errorInput.value;
-            evento.preventDefault();
-            if (tituloInput === "") {
-                errorInput.textContent = "Digite o titulo da sua matéria!"
-        } else{
+    handleClickAdicionarCaderno() {
+        this.setState({
+            creaButton: <ButtonCreaButton />
+        })
+    }
+
+    tituloInputAdicionarCaderno(evento) {
+        const tituloInput = tituloInput.value;
+        const errorInput = errorInput.value;
+        evento.preventDefault();
+        if (tituloInput === "") {
+            errorInput.textContent = "Digite o titulo da sua matéria!"
+        } else {
             const adicionarCaderno = React.createElement(
-            "button",
-            {id:"btn-cadernos-fin"},
-            "adicionarCaderno",
-            'div',
-            {id:'Tabela'},
-            'tituloInput')
+                "button",
+                { id: "btn-cadernos-fin" },
+                "adicionarCaderno",
+                'div',
+                { id: 'Tabela' },
+                'tituloInput')
 
-            // const buttonTabela = tituloInput;
-            // const tabela = "";
-            // const error = "";
+
         }
     }
-       
 
-    render(button) {
+
+    render() {
         return (
             <Fragment>
                 <Nav />
@@ -73,45 +75,46 @@ class CadernoDigital extends React.Component {
                 <ImagemHeader />
                 <section className="secao-caderno-digital">
                     <div>
-                        <button onClick={ () => this.handleClick() } id="ferramentas-geral" className="ferramentas">Ferramentas
+                        <button onClick={() => this.handleClick()} id="ferramentas-geral" className="ferramentas">Ferramentas
                     <div className="button_horizontal"></div>
                         </button>
                     </div>
                     <div id="div1">
                         <ToggleDisplay show={this.state.show}>
-                        <button onClick ={() => this.handleClickCaderno()} id="button-cadernos" className="btn-cadernos">
-                            <img src={ImagemPasta} alt="icone-de-pasta"></img>
-                            <p>Cadernos</p>
-                        </button>
+                            <button onClick={() => this.handleClickCaderno()} id="button-cadernos" className="btn-cadernos">
+                                <img src={ImagemPasta} alt="icone-de-pasta"></img>
+                                <p>Cadernos</p>
+                            </button>
                         </ToggleDisplay>
                     </div>
- 
+
                     <section id="caderno-img">
-                    <ToggleDisplay hide={this.state.hide}>
-                        <div className="caderno-funcional">
-                            <h2>Título</h2>
-                            <input id="tituloInput" class="inputSpace" type="text" size="15" maxlength="30"
-                                placeholder="Escreva o título do caderno"></input>
-                            <p className="error"></p>
-                            <button onClick={() => this.tituloInputAdicionarCaderno} id="button-agregar" className="btn-agregar">Adicionar Caderno</button>
-                        </div>
+                        <ToggleDisplay hide={this.state.hide}>
+                            <div className="caderno-funcional">
+                                <h2>Título</h2>
+                                <input id="tituloInput" className="inputSpace" type="text" size="15" maxlength="30"
+                                    placeholder="Escreva o título do caderno"></input>
+                                <p className="error"></p>
+                                <button onClick={() => this.handleClickAdicionarCaderno()} id="button-agregar" className="btn-agregar">Adicionar Caderno</button>
+                            </div>
 
-                        <div id="cadernos" draggable="true">
+                            <div id="cadernos" draggable="true">
+                                <ButtonCreaButton />
 
-                            <div id="Tabela"></div>
+                                <div id="Tabela"></div>
 
 
-                        </div>
-                        <div className="tarea">
-                            <textarea name="Reprograma" id="cadernoReprograma" cols="30" rows="10"
-                                value="Escreva aquí o seu texto">Escreva aqui o texto</textarea>
-                        </div>
-                        <div id="botaos">
-                            <button id="salvar" className="btn-salvar">Salvar</button>
-                            <button id="novo" className="btn-novo">Criar PDF</button>
-                        </div>
+                            </div>
+                            <div className="tarea">
+                                <textarea name="Reprograma" id="cadernoReprograma" cols="30" rows="10"
+                                    value="Escreva aquí o seu texto">Escreva aqui o texto</textarea>
+                            </div>
+                            <div id="botaos">
+                                <button id="salvar" className="btn-salvar">Salvar</button>
+                                <button id="novo" className="btn-novo">Criar PDF</button>
+                            </div>
                         </ToggleDisplay>
-                    </section> 
+                    </section>
                 </section>
                 <ContainerImagens />
                 <ContainerImagens2 />
