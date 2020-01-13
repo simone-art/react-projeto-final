@@ -33,8 +33,39 @@ class CadernoDigital extends React.Component {
             });
         }
         
+        buttonAgregar = document.getElementById("button-agregar");
+        tituloInput= document.getElementById("tituloInput") 
+        tabela = document.getElementById("Tabela");
+        error = document.querySelector(".error");
+        // titulo = tituloInput.value;
 
-    render() {
+        // buttonAdicionarCaderno () {
+        //     const adicionarCaderno = React.createElement("button");
+        // }
+
+        tituloInputAdicionarCaderno(evento){
+            const tituloInput = tituloInput.value;
+            const errorInput = errorInput.value;
+            evento.preventDefault();
+            if (tituloInput === "") {
+                errorInput.textContent = "Digite o titulo da sua matéria!"
+        } else{
+            const adicionarCaderno = React.createElement(
+            "button",
+            {id:"btn-cadernos-fin"},
+            "adicionarCaderno",
+            'div',
+            {id:'Tabela'},
+            'tituloInput')
+
+            // const buttonTabela = tituloInput;
+            // const tabela = "";
+            // const error = "";
+        }
+    }
+       
+
+    render(button) {
         return (
             <Fragment>
                 <Nav />
@@ -60,9 +91,9 @@ class CadernoDigital extends React.Component {
                         <div className="caderno-funcional">
                             <h2>Título</h2>
                             <input id="tituloInput" class="inputSpace" type="text" size="15" maxlength="30"
-                                value="Escreva o título do caderno"></input>
+                                placeholder="Escreva o título do caderno"></input>
                             <p className="error"></p>
-                            <button id="button-agregar" className="btn-agregar">Adicionar Caderno</button>
+                            <button onClick={() => this.tituloInputAdicionarCaderno} id="button-agregar" className="btn-agregar">Adicionar Caderno</button>
                         </div>
 
                         <div id="cadernos" draggable="true">
