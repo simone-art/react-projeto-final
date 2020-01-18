@@ -18,8 +18,7 @@ class CadernoDigital extends React.Component {
         this.state = {
             show: false,
             hide: true,
-            value: ""
-            
+            value: "",
         };
         this.handleClickInput=this.handleClickInput.bind(this)
         this.handleChange=this.handleChange.bind(this)
@@ -51,22 +50,38 @@ class CadernoDigital extends React.Component {
         })
         
     }
+
     
-    handleSubmit(event) {
-        alert(`você é um trouxa: ${this.state.value}`);
-        let buttonCaderno = React.createElement("button", {value:"this.state.value"})
-        // buttonCaderno.appendChild("Tabela")
-        // buttonCaderno.className.addClassList="btn-cadernos-fin"
-        // function run() {
-        //     ReactDOM.render(button,document.getElementById('#Tabela'))
-    
-        // }
+    handleSubmit () { 
+        let button = React.createElement("button", {
+            className:'btn-cadernos-fin',  
+            // value:'this.state.value'  
+        })
+        ReactDOM.render( button, document.getElementById('Tabela'));
+
+        
+        
+        
+        // alert(`você é um trouxa: ${this.state.value}`); 
+        
         console.log("clickou")
+        
     }
     
-
+    // handleClickButton() {
+    //     this.setState({
+    //         pepino: !this.state.show
+    //     });
+    // }
+    
+    
+    
+    
     render() {
         const {value} = this.state;
+        const {button} = this.state;
+
+        // const {buttonCaderno} = this.state;
         return (
             <Fragment>
                 <Nav />
@@ -96,19 +111,18 @@ class CadernoDigital extends React.Component {
                                 value={value} onChange={this.handleChange}
                                 placeholder="Escreva o título do caderno"></input>
                                 <button onClick={() => this.handleSubmit()} id="button-agregar" className="btn-agregar">Adicionar Caderno</button>
+
                             </div>
-
-
                             <div id="cadernos" draggable="true">
                                 
-                               
-
-                                <div id="Tabela">
+                                <div id="Tabela" >
+                                {/* value = {value} */}
                                 
+                                {/* <CrearButton value={value} button={button} /> */}
                                 </div>
-
-
+                                
                             </div>
+                               
                             <div className="tarea">
                                 <textarea name="Reprograma" id="cadernoReprograma" cols="30" rows="10"
                                     value="Escreva aquí o seu texto">Escreva aqui o texto</textarea>
