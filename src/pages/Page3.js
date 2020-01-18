@@ -19,6 +19,7 @@ class CadernoDigital extends React.Component {
             show: false,
             hide: true,
             value: "",
+            
         };
         this.handleClickInput=this.handleClickInput.bind(this)
         this.handleChange=this.handleChange.bind(this)
@@ -36,10 +37,9 @@ class CadernoDigital extends React.Component {
             hide: !this.state.hide
         });
     }
-
     
     handleClickInput() {
-        this.handleSubmit()
+        // this.handleSubmit()
         console.log("alguma coisa");
         
     }
@@ -51,22 +51,24 @@ class CadernoDigital extends React.Component {
         
     }
 
-    
     handleSubmit () { 
-        let button = React.createElement("button", {
-            className:'btn-cadernos-fin',  
-            // value:'this.state.value'  
-        })
+        let button = React.createElement("button", 
+        {
+            className:'btn-cadernos-fin', 
+            // content: [this.state.value],
+            // value: [this.state.value]
+           
+        },
+        this.state.value
+        )
         ReactDOM.render( button, document.getElementById('Tabela'));
-
-        
-        
-        
         // alert(`você é um trouxa: ${this.state.value}`); 
         
-        console.log("clickou")
+        // console.log("clickou")
+        
         
     }
+    
     
     // handleClickButton() {
     //     this.setState({
@@ -108,15 +110,21 @@ class CadernoDigital extends React.Component {
                                 <h2>Título</h2>
                                 <p className="error"></p>
                                 <input id="tituloInput" className="inputSpace" type="text" size="15" maxlength="30"
-                                value={value} onChange={this.handleChange}
+                                value={value} onChange={this.handleChange} onInput={this.handleClickInput}
                                 placeholder="Escreva o título do caderno"></input>
                                 <button onClick={() => this.handleSubmit()} id="button-agregar" className="btn-agregar">Adicionar Caderno</button>
 
                             </div>
                             <div id="cadernos" draggable="true">
                                 
-                                <div id="Tabela" >
-                                {/* value = {value} */}
+                                <div id="Tabela">
+                                    
+                                
+                                {/* [`${this.state.value}`]: value */}
+                                {/* {this.state.value} */}
+                                    {/* {this.state.value} */}
+                                 
+                                 
                                 
                                 {/* <CrearButton value={value} button={button} /> */}
                                 </div>
