@@ -19,11 +19,15 @@ class CadernoDigital extends React.Component {
             show: false,
             hide: true,
             value: "",
+            capturandoTitulo: "",
+            guardandoTexto: "",
+            valueTextarea: "Escreva aquí seu texto"
             
         };
         this.handleClickInput=this.handleClickInput.bind(this)
         this.handleChange=this.handleChange.bind(this)
         this.handleSubmit=this.handleSubmit.bind(this)
+        // this.capturarTituloTexto=this.capturarTituloTexto.bind(this)
     }
 
     handleClick() {
@@ -59,7 +63,8 @@ class CadernoDigital extends React.Component {
             // value: [this.state.value]
            
         },
-        this.state.value
+        this.state.capturandoTitulo,
+        this.state.guardandoTexto
         )
         ReactDOM.render( button, document.getElementById('Tabela'));
         // alert(`você é um trouxa: ${this.state.value}`); 
@@ -68,22 +73,41 @@ class CadernoDigital extends React.Component {
         
         
     }
-    
-    
-    // handleClickButton() {
-    //     this.setState({
-    //         pepino: !this.state.show
-    //     });
-    // }
-    
-    
-    
-    
-    render() {
-        const {value} = this.state;
-        const {button} = this.state;
 
-        // const {buttonCaderno} = this.state;
+    handleClickTextarea(){
+        console.log("Ricky Martin")
+    }
+
+    handleChange = (event) => {
+    const input = event.target;
+    const value = input.value;
+ 
+    this.setState({ [input.name]: value });
+    }
+
+    handleChangeTextarea = (event) => {
+        const textarea = event.target;
+        const value = textarea.value;
+     
+        this.setState({ [textarea.name]: value });
+    }
+
+    
+    handleTextareaSubmit = () => {
+        const {capturandoTitulo, guardandoTexto} = this.state;
+        localStorage.setItem('capturandoTitulo', capturandoTitulo)
+        localStorage.setItem('guardandoTexto', guardandoTexto)
+        
+    }
+
+    
+        render() {
+            const {value} = this.state;
+            const {button} = this.state;
+            const capturandoTitulo = document.getElementById("tituloInput");
+            const guardandoTexto = document.getElementById("cadenaReprograma");
+            const {valueTextarea} = this.state;
+    
         return (
             <Fragment>
                 <Nav />
@@ -109,8 +133,8 @@ class CadernoDigital extends React.Component {
                             <div className="caderno-funcional">
                                 <h2>Título</h2>
                                 <p className="error"></p>
-                                <input id="tituloInput" className="inputSpace" type="text" size="15" maxlength="30"
-                                value={value} onChange={this.handleChange} onInput={this.handleClickInput}
+                                 <input name="capturandoTitulo" id="tituloInput" className="inputSpace" type="text" size="15" maxlength="30"
+                                value={this.state.capturandoTitulo} onChange={this.handleChange} 
                                 placeholder="Escreva o título do caderno"></input>
                                 <button onClick={() => this.handleSubmit()} id="button-agregar" className="btn-agregar">Adicionar Caderno</button>
 
@@ -132,11 +156,11 @@ class CadernoDigital extends React.Component {
                             </div>
                                
                             <div className="tarea">
-                                <textarea name="Reprograma" id="cadernoReprograma" cols="30" rows="10"
-                                    value="Escreva aquí o seu texto">Escreva aqui o texto</textarea>
+                                <textarea name="guardandoTexto" id="cadernoReprograma" cols="30" rows="10"
+                                  placeholder="Escreva aquí seu texto" value={this.state.guardandoTexto} onChange={this.handleChangeTextarea}></textarea>
                             </div>
                             <div id="botaos">
-                                <button id="salvar" className="btn-salvar">Salvar</button>
+                                <button onClick={this.handleTextareaSubmit()}id="salvar" className="btn-salvar">Salvar</button>
                                 <button id="novo" className="btn-novo">Criar PDF</button>
                             </div>
                         </ToggleDisplay>
