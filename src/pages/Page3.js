@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Children } from 'react';
 import ReactDOM from 'react-dom';
 import Nav from '../componentes/Nav';
 import NavLinks from '../componentes/NavLinks';
@@ -12,6 +12,7 @@ import ToggleDisplay from 'react-toggle-display';
 import '../pages/Page3.css';
 
 
+
 class CadernoDigital extends React.Component {
     constructor(props) {
         super(props)
@@ -20,15 +21,20 @@ class CadernoDigital extends React.Component {
             hide: true,
             value: "",
             capturandoTitulo: "",
+            nomes: [],
+            items: "",
             guardandoTexto: "",
             valueTextarea: "Escreva aquí seu texto"
+            
             
         };
         this.handleClickInput=this.handleClickInput.bind(this)
         this.handleChange=this.handleChange.bind(this)
-        this.handleSubmit=this.handleSubmit.bind(this)
+        // this.handleSubmit=this.handleSubmit.bind(this)
+        this.adicionarItem=this.adicionarItem.bind(this)
+  }
         // this.capturarTituloTexto=this.capturarTituloTexto.bind(this)
-    }
+    
 
     handleClick() {
         this.setState({
@@ -50,40 +56,58 @@ class CadernoDigital extends React.Component {
     
     handleChange(event){
         this.setState({
-            value: event.target.value
+            value: event.target.value,
         })
         
     }
 
-    handleSubmit () { 
-        let button = React.createElement("button", 
-        {
-            className:'btn-cadernos-fin', 
-            // content: [this.state.value],
-            // value: [this.state.value]
-           
-        },
-        this.state.capturandoTitulo,
-        this.state.guardandoTexto
-        )
-        ReactDOM.render( button, document.getElementById('Tabela'));
-        // alert(`você é um trouxa: ${this.state.value}`); 
+    // handleSubmit () { 
         
-        // console.log("clickou")
+    //     let button = React.createElement("button", 
+    //     {
+    //         className:'btn-cadernos-fin', 
+    //         // content: [this.state.value],
+    //         // value: [this.state.value] 
+            
+    //     },
+    //     this.state.capturandoTitulo
         
+    //     // this.state.guardandoTexto
+    //     )
+    //     ReactDOM.render( button, document.getElementById('Tabela'));
+    //     // alert(`você é um trouxa: ${this.state.value}`); 
         
+    //     // console.log("clickou") 
+    
+    // }
+
+    // onChangeInput = e => {
+    //     //  let value = element.target.value
+    //     this.setState({ value: e.target.value })
+    //    //  console.log(e.target.value)
+    // }
+
+
+    adicionarItem = () => {
+        this.setState({
+            nomes: [ 
+                ...this.state.nomes,
+                this.state.capturandoTitulo,
+            ]
+        })
     }
+    handleChange = (event) => {
+    const input = event.target;
+    const value = input.value;
+    this.setState({ [input.name]: value });
+    }
+
+     
 
     handleClickTextarea(){
         console.log("Ricky Martin")
     }
 
-    handleChange = (event) => {
-    const input = event.target;
-    const value = input.value;
- 
-    this.setState({ [input.name]: value });
-    }
 
     handleChangeTextarea = (event) => {
         const textarea = event.target;
@@ -100,13 +124,23 @@ class CadernoDigital extends React.Component {
         
     }
 
+    handleTextareaGet = () => {
+        const {capturandoTitulo, guardandoTexto} = this.state;
+        localStorage.getItem('capturandoTitulo')
+        localStorage.getItem('guardandoTexto')
+        // console.log("handleTextareaGet")
+    }
+
     
         render() {
             const {value} = this.state;
             const {button} = this.state;
+            const {input} = this.state;
             const capturandoTitulo = document.getElementById("tituloInput");
             const guardandoTexto = document.getElementById("cadenaReprograma");
             const {valueTextarea} = this.state;
+            
+            
     
         return (
             <Fragment>
@@ -133,34 +167,37 @@ class CadernoDigital extends React.Component {
                             <div className="caderno-funcional">
                                 <h2>Título</h2>
                                 <p className="error"></p>
+
                                  <input name="capturandoTitulo" id="tituloInput" className="inputSpace" type="text" size="15" maxlength="30"
                                 value={this.state.capturandoTitulo} onChange={this.handleChange} 
                                 placeholder="Escreva o título do caderno"></input>
-                                <button onClick={() => this.handleSubmit()} id="button-agregar" className="btn-agregar">Adicionar Caderno</button>
-
+                                <button onClick={() => this.adicionarItem()} id="button-agregar" className="btn-agregar">Adicionar Caderno</button>
                             </div>
+
+                            <Fragment>
+                                
                             <div id="cadernos" draggable="true">
                                 
-                                <div id="Tabela">
-                                    
                                 
-                                {/* [`${this.state.value}`]: value */}
-                                {/* {this.state.value} */}
-                                    {/* {this.state.value} */}
-                                 
-                                 
-                                
-                                {/* <CrearButton value={value} button={button} /> */}
+                                {this.state.nomes.map((value, i) => {
+                                return (
+                                    <div id="Tabela" key={i}>
+                                        {/* {this.handleSubmit} */}
+                                        {/* {this.handleTextareaGet()} */}
+                                        <button className="btn-cadernos-fin">{value}</button>
+                                    </div>
+                                    );
+                                })}
+                                   
                                 </div>
-                                
-                            </div>
+                                </Fragment>
                                
                             <div className="tarea">
                                 <textarea name="guardandoTexto" id="cadernoReprograma" cols="30" rows="10"
-                                  placeholder="Escreva aquí seu texto" value={this.state.guardandoTexto} onChange={this.handleChangeTextarea}></textarea>
+                                  placeholder="Escreva aquí seu texto" value={this.state.guardandoTexto} onChange={this.handleChangeTextarea} onInput={this.handleTextareaSubmit}></textarea>
                             </div>
                             <div id="botaos">
-                                <button onClick={this.handleTextareaSubmit()}id="salvar" className="btn-salvar">Salvar</button>
+                                <button onClick={this.handleTextareaGet()} id="salvar" className="btn-salvar">Salvar</button>
                                 <button id="novo" className="btn-novo">Criar PDF</button>
                             </div>
                         </ToggleDisplay>
