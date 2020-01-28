@@ -142,7 +142,10 @@ class CadernoDigital extends React.Component {
     }
 
     buttonClickMaterias = (event) => {
-        console.log("VAI A MERDA")
+    const buttonTituloTexto = localStorage.getItem(event.target.textContent)
+    const textoArea = document.getElementById("cadernoReprograma")
+    textoArea.value = buttonTituloTexto; 
+    console.log("VAI A MERDA")
         
     }
 
