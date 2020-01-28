@@ -22,7 +22,7 @@ class CadernoDigital extends React.Component {
             value: "",
             capturandoTitulo: "",
             nomes: [],
-            items: "",
+            texto: "",
             guardandoTexto: "",
             valueTextarea: "Escreva aquí seu texto"
             
@@ -30,6 +30,7 @@ class CadernoDigital extends React.Component {
         };
         this.handleClickInput=this.handleClickInput.bind(this)
         this.handleChange=this.handleChange.bind(this)
+        this.handleChangeTextarea=this.handleChange.bind(this)
         // this.handleSubmit=this.handleSubmit.bind(this)
         this.adicionarItem=this.adicionarItem.bind(this)
   }
@@ -54,12 +55,12 @@ class CadernoDigital extends React.Component {
         
     }
     
-    handleChange(event){
-        this.setState({
-            value: event.target.value,
-        })
+    // handleChange(event){
+    //     this.setState({
+    //         value: event.target.value,
+    //     })
         
-    }
+    // }
 
     // handleSubmit () { 
         
@@ -96,6 +97,16 @@ class CadernoDigital extends React.Component {
             ]
         })
     }
+
+    // adicionarTitulo = () => {
+    //     this.setState({
+    //         titulo: [ 
+    //             ...this.state.titulo,
+    //             this.state.capturandoTitulo,
+    //         ]
+    //     })
+    // }
+
     handleChange = (event) => {
     const input = event.target;
     const value = input.value;
@@ -116,11 +127,10 @@ class CadernoDigital extends React.Component {
         this.setState({ [textarea.name]: value });
     }
 
-    
-    handleTextareaSubmit = () => {
+    handleTextareaSubmit = (event) => {
         const {capturandoTitulo, guardandoTexto} = this.state;
-        localStorage.setItem('capturandoTitulo', capturandoTitulo)
-        localStorage.setItem('guardandoTexto', guardandoTexto)
+        localStorage.setItem(capturandoTitulo, guardandoTexto)
+        
         
     }
 
@@ -129,6 +139,11 @@ class CadernoDigital extends React.Component {
         localStorage.getItem('capturandoTitulo')
         localStorage.getItem('guardandoTexto')
         // console.log("handleTextareaGet")
+    }
+
+    buttonClickMaterias = (event) => {
+        console.log("VAI A MERDA")
+        
     }
 
     
@@ -184,18 +199,23 @@ class CadernoDigital extends React.Component {
                                     <div id="Tabela" key={i}>
                                         {/* {this.handleSubmit} */}
                                         {/* {this.handleTextareaGet()} */}
-                                        <button className="btn-cadernos-fin">{value}</button>
+                                        <button className="btn-cadernos-fin" onClick={this.buttonClickMaterias}>{value}</button>
                                     </div>
                                     );
                                 })}
                                    
                                 </div>
                                 </Fragment>
-                               
+
                             <div className="tarea">
                                 <textarea name="guardandoTexto" id="cadernoReprograma" cols="30" rows="10"
-                                  placeholder="Escreva aquí seu texto" value={this.state.guardandoTexto} onChange={this.handleChangeTextarea} onInput={this.handleTextareaSubmit}></textarea>
+                                placeholder="Escreva aquí seu texto" value={this.state.guardandoTexto} 
+                                onChange={this.handleChangeTextarea} onInput={this.handleTextareaSubmit} ></textarea>
                             </div>
+
+                            
+                             
+
                             <div id="botaos">
                                 <button onClick={this.handleTextareaGet()} id="salvar" className="btn-salvar">Salvar</button>
                                 <button id="novo" className="btn-novo">Criar PDF</button>
